@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_opening_hours_restaurant_schedules",
+  "info": {
+    "displayName": "Schedule",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "day": {
+      "type": "enumeration",
+      "enum": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "opening_time": {
+      "type": "time"
+    },
+    "closing_time": {
+      "type": "time"
+    },
+    "open_or_closed": {
+      "type": "enumeration",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "default": "open"
+    }
+  }
+}
