@@ -374,7 +374,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String &
+    productName: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 1;
@@ -424,7 +424,7 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    restaurantName: Attribute.String;
     address: Attribute.String;
     postal_code: Attribute.String;
     city: Attribute.String;
@@ -439,10 +439,18 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
-    description: Attribute.Text;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 400;
+      }>;
     email: Attribute.Email & Attribute.Required;
     isOpen: Attribute.Boolean & Attribute.DefaultTo<true>;
-    slug: Attribute.UID<'api::restaurant.restaurant', 'name'>;
+    slug: Attribute.UID;
+    opening_hour: Attribute.Component<
+      'opening-hours-restaurant.schedule',
+      true
+    >;
+    banner_photo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
