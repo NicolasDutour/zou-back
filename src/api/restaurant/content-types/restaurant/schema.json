@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "restaurantName": {
       "type": "string"
     },
     "address": {
@@ -40,7 +40,8 @@
       "mappedBy": "restaurant"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 400
     },
     "email": {
       "type": "email",
@@ -51,8 +52,23 @@
       "default": true
     },
     "slug": {
-      "type": "uid",
-      "targetField": "name"
+      "type": "uid"
+    },
+    "opening_hour": {
+      "type": "component",
+      "repeatable": true,
+      "component": "opening-hours-restaurant.schedule"
+    },
+    "banner_photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
