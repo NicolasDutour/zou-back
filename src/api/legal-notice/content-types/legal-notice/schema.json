@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legal_notices",
+  "info": {
+    "singularName": "legal-notice",
+    "pluralName": "legal-notices",
+    "displayName": "Legal Notice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
