@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -71,6 +70,11 @@
       "relation": "oneToMany",
       "target": "api::restaurant.restaurant",
       "mappedBy": "users_permissions_user"
+    },
+    "pricing_plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pricing-plan.pricing-plan"
     }
   }
 }
