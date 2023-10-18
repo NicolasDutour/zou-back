@@ -362,113 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
-  info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Product';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    productName: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 1;
-      }>;
-    ingredients: Attribute.String & Attribute.Required;
-    photo: Attribute.Media;
-    restaurant: Attribute.Relation<
-      'api::product.product',
-      'manyToOne',
-      'api::restaurant.restaurant'
-    >;
-    base: Attribute.Enumeration<['tomate', 'cr\u00E8me']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'tomate'>;
-    price: Attribute.Decimal &
-      Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRestaurantRestaurant extends Schema.CollectionType {
-  collectionName: 'restaurants';
-  info: {
-    singularName: 'restaurant';
-    pluralName: 'restaurants';
-    displayName: 'Restaurant';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    restaurantName: Attribute.String;
-    address: Attribute.String;
-    postal_code: Attribute.String;
-    city: Attribute.String;
-    phone: Attribute.String;
-    users_permissions_user: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    products: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToMany',
-      'api::product.product'
-    >;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 400;
-      }>;
-    email: Attribute.Email & Attribute.Required;
-    isOpen: Attribute.Boolean & Attribute.DefaultTo<true>;
-    slug: Attribute.UID;
-    opening_hour: Attribute.Component<
-      'opening-hours-restaurant.schedule',
-      true
-    >;
-    banner_photo: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -694,7 +587,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -727,6 +619,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToMany',
       'api::restaurant.restaurant'
+    >;
+    pricing_plan: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::pricing-plan.pricing-plan'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -789,6 +686,205 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiDataPersonalDataPersonal extends Schema.CollectionType {
+  collectionName: 'data_personals';
+  info: {
+    singularName: 'data-personal';
+    pluralName: 'data-personals';
+    displayName: 'Data Personal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::data-personal.data-personal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::data-personal.data-personal',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLegalNoticeLegalNotice extends Schema.CollectionType {
+  collectionName: 'legal_notices';
+  info: {
+    singularName: 'legal-notice';
+    pluralName: 'legal-notices';
+    displayName: 'Legal Notice';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::legal-notice.legal-notice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::legal-notice.legal-notice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPricingPlanPricingPlan extends Schema.CollectionType {
+  collectionName: 'pricing_plans';
+  info: {
+    singularName: 'pricing-plan';
+    pluralName: 'pricing-plans';
+    displayName: 'PricingPlan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    price: Attribute.Decimal & Attribute.Required;
+    included: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pricing-plan.pricing-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pricing-plan.pricing-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    productName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 1;
+      }>;
+    ingredients: Attribute.String & Attribute.Required;
+    photo: Attribute.Media;
+    restaurant: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::restaurant.restaurant'
+    >;
+    base: Attribute.Enumeration<['tomate', 'cr\u00E8me']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'tomate'>;
+    price: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetMinMax<{
+        min: 1;
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRestaurantRestaurant extends Schema.CollectionType {
+  collectionName: 'restaurants';
+  info: {
+    singularName: 'restaurant';
+    pluralName: 'restaurants';
+    displayName: 'Restaurant';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    restaurant_name: Attribute.String & Attribute.Required;
+    address: Attribute.String;
+    phone: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::restaurant.restaurant',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    products: Attribute.Relation<
+      'api::restaurant.restaurant',
+      'oneToMany',
+      'api::product.product'
+    >;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 400;
+      }>;
+    email: Attribute.Email & Attribute.Required;
+    isOpen: Attribute.Boolean & Attribute.DefaultTo<true>;
+    slug: Attribute.UID<'api::restaurant.restaurant', 'restaurant_name'>;
+    opening_hour: Attribute.Component<
+      'opening-hours-restaurant.schedule',
+      true
+    >;
+    banner_photo: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::restaurant.restaurant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::restaurant.restaurant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -799,14 +895,17 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::product.product': ApiProductProduct;
-      'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::data-personal.data-personal': ApiDataPersonalDataPersonal;
+      'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
+      'api::pricing-plan.pricing-plan': ApiPricingPlanPricingPlan;
+      'api::product.product': ApiProductProduct;
+      'api::restaurant.restaurant': ApiRestaurantRestaurant;
     }
   }
 }

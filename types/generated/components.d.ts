@@ -5,6 +5,7 @@ export interface OpeningHoursRestaurantSchedule extends Schema.Component {
   info: {
     displayName: 'Schedule';
     icon: 'clock';
+    description: '';
   };
   attributes: {
     day: Attribute.Enumeration<
@@ -18,10 +19,12 @@ export interface OpeningHoursRestaurantSchedule extends Schema.Component {
         'sunday'
       ]
     >;
-    opening_time: Attribute.Time;
-    closing_time: Attribute.Time;
+    opening_time_morning: Attribute.Time;
+    closing_time_morning: Attribute.Time;
     open_or_closed: Attribute.Enumeration<['open', 'closed']> &
       Attribute.DefaultTo<'open'>;
+    opening_time_afternoon: Attribute.Time;
+    closing_time_afternoon: Attribute.Time;
   };
 }
 
