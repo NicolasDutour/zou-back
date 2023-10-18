@@ -12,16 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "restaurantName": {
-      "type": "string"
+    "restaurant_name": {
+      "type": "string",
+      "required": true
     },
     "address": {
-      "type": "string"
-    },
-    "postal_code": {
-      "type": "string"
-    },
-    "city": {
       "type": "string"
     },
     "phone": {
@@ -52,7 +47,8 @@
       "default": true
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "restaurant_name"
     },
     "opening_hour": {
       "type": "component",

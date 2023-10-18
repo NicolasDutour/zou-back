@@ -2,7 +2,8 @@
   "collectionName": "components_opening_hours_restaurant_schedules",
   "info": {
     "displayName": "Schedule",
-    "icon": "clock"
+    "icon": "clock",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -18,10 +19,10 @@
         "sunday"
       ]
     },
-    "opening_time": {
+    "opening_time_morning": {
       "type": "time"
     },
-    "closing_time": {
+    "closing_time_morning": {
       "type": "time"
     },
     "open_or_closed": {
@@ -31,6 +32,12 @@
         "closed"
       ],
       "default": "open"
+    },
+    "opening_time_afternoon": {
+      "type": "time"
+    },
+    "closing_time_afternoon": {
+      "type": "time"
     }
   }
 }
