@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "data_personals",
+  "info": {
+    "singularName": "data-personal",
+    "pluralName": "data-personals",
+    "displayName": "Data Personal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
