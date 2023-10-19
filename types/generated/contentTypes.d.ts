@@ -867,6 +867,8 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
       true
     >;
     banner_photo: Attribute.Media;
+    longitude: Attribute.String;
+    latitude: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
