@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "productName": {
+    "product_name": {
       "type": "string",
       "required": true,
       "minLength": 1
@@ -38,19 +38,14 @@
       "target": "api::restaurant.restaurant",
       "inversedBy": "products"
     },
-    "base": {
-      "type": "enumeration",
-      "enum": [
-        "tomate",
-        "crème"
-      ],
-      "default": "tomate",
-      "required": true
-    },
     "price": {
       "type": "decimal",
-      "required": true,
+      "required": false,
       "min": 1
+    },
+    "base": {
+      "type": "string",
+      "default": "tomato"
     }
   }
 }

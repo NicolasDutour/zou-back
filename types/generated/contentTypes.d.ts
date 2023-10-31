@@ -792,7 +792,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    productName: Attribute.String &
+    product_name: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
         minLength: 1;
@@ -804,14 +804,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::restaurant.restaurant'
     >;
-    base: Attribute.Enumeration<['tomate', 'cr\u00E8me']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'tomate'>;
     price: Attribute.Decimal &
-      Attribute.Required &
       Attribute.SetMinMax<{
         min: 1;
       }>;
+    base: Attribute.String & Attribute.DefaultTo<'tomato'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -860,8 +857,9 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
         maxLength: 400;
       }>;
     email: Attribute.Email & Attribute.Required;
-    isOpen: Attribute.Boolean & Attribute.DefaultTo<true>;
-    slug: Attribute.UID<'api::restaurant.restaurant', 'restaurant_name'>;
+    isActive: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
     opening_hour: Attribute.Component<
       'opening-hours-restaurant.schedule',
       true
@@ -869,6 +867,7 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     banner_photo: Attribute.Media;
     longitude: Attribute.String;
     latitude: Attribute.String;
+    slug: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

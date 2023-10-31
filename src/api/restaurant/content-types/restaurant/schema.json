@@ -42,13 +42,10 @@
       "type": "email",
       "required": true
     },
-    "isOpen": {
+    "isActive": {
       "type": "boolean",
-      "default": true
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "restaurant_name"
+      "default": true,
+      "required": true
     },
     "opening_hour": {
       "type": "component",
@@ -70,6 +67,9 @@
       "type": "string"
     },
     "latitude": {
+      "type": "string"
+    },
+    "slug": {
       "type": "string"
     }
   }
