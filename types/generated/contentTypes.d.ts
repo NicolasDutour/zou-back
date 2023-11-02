@@ -716,6 +716,29 @@ export interface ApiDataPersonalDataPersonal extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaqFaq extends Schema.CollectionType {
+  collectionName: 'faqs';
+  info: {
+    singularName: 'faq';
+    pluralName: 'faqs';
+    displayName: 'faq';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLegalNoticeLegalNotice extends Schema.CollectionType {
   collectionName: 'legal_notices';
   info: {
@@ -903,6 +926,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::data-personal.data-personal': ApiDataPersonalDataPersonal;
+      'api::faq.faq': ApiFaqFaq;
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
       'api::pricing-plan.pricing-plan': ApiPricingPlanPricingPlan;
       'api::product.product': ApiProductProduct;
