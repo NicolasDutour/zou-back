@@ -4,7 +4,8 @@
   "info": {
     "singularName": "pricing-plan",
     "pluralName": "pricing-plans",
-    "displayName": "PricingPlan"
+    "displayName": "PricingPlan",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +24,13 @@
       "type": "decimal",
       "required": true
     },
-    "included": {
+    "access": {
+      "type": "text"
+    },
+    "wedoforyou": {
+      "type": "text"
+    },
+    "youmanage": {
       "type": "text"
     }
   }
