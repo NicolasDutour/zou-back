@@ -44,8 +44,13 @@
       "min": 1
     },
     "base": {
-      "type": "string",
-      "default": "tomato"
+      "type": "enumeration",
+      "enum": [
+        "tomate",
+        "crème"
+      ],
+      "default": "tomate",
+      "required": true
     }
   }
 }
