@@ -721,7 +721,8 @@ export interface ApiFaqFaq extends Schema.CollectionType {
   info: {
     singularName: 'faq';
     pluralName: 'faqs';
-    displayName: 'faq';
+    displayName: 'Faq';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -776,6 +777,7 @@ export interface ApiPricingPlanPricingPlan extends Schema.CollectionType {
     singularName: 'pricing-plan';
     pluralName: 'pricing-plans';
     displayName: 'PricingPlan';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -784,7 +786,9 @@ export interface ApiPricingPlanPricingPlan extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text & Attribute.Required;
     price: Attribute.Decimal & Attribute.Required;
-    included: Attribute.Text;
+    access: Attribute.Text;
+    wedoforyou: Attribute.Text;
+    youmanage: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -831,7 +835,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.SetMinMax<{
         min: 1;
       }>;
-    base: Attribute.String & Attribute.DefaultTo<'tomato'>;
+    base: Attribute.Enumeration<['tomate', 'cr\u00E8me']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'tomate'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -909,6 +915,30 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
   };
 }
 
+export interface ApiStepStep extends Schema.CollectionType {
+  collectionName: 'steps';
+  info: {
+    singularName: 'step';
+    pluralName: 'steps';
+    displayName: 'Step';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::step.step', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::step.step', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -931,6 +961,7 @@ declare module '@strapi/types' {
       'api::pricing-plan.pricing-plan': ApiPricingPlanPricingPlan;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
+      'api::step.step': ApiStepStep;
     }
   }
 }
