@@ -50,6 +50,16 @@
         "crème"
       ],
       "default": "tomate",
+      "required": false
+    },
+    "vegetarian": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "dessert": {
+      "type": "boolean",
+      "default": false,
       "required": true
     }
   }

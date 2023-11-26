@@ -71,6 +71,23 @@
     },
     "slug": {
       "type": "string"
+    },
+    "short_description": {
+      "type": "text",
+      "maxLength": 50
+    },
+    "drive": {
+      "type": "boolean"
+    },
+    "take_away": {
+      "type": "boolean"
+    },
+    "delivery": {
+      "type": "boolean"
+    },
+    "eat_in": {
+      "type": "boolean",
+      "required": false
     }
   }
 }
