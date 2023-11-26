@@ -740,6 +740,32 @@ export interface ApiFaqFaq extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeHome extends Schema.SingleType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: 'Home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    subtitle: Attribute.String & Attribute.Required;
+    slogan: Attribute.String & Attribute.Required;
+    slogan_bis: Attribute.String & Attribute.Required;
+    slogan_ter: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLegalNoticeLegalNotice extends Schema.CollectionType {
   collectionName: 'legal_notices';
   info: {
@@ -836,8 +862,13 @@ export interface ApiProductProduct extends Schema.CollectionType {
         min: 1;
       }>;
     base: Attribute.Enumeration<['tomate', 'cr\u00E8me']> &
-      Attribute.Required &
       Attribute.DefaultTo<'tomate'>;
+    vegetarian: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    dessert: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -897,6 +928,14 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     longitude: Attribute.String;
     latitude: Attribute.String;
     slug: Attribute.String;
+    short_description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    drive: Attribute.Boolean;
+    take_away: Attribute.Boolean;
+    delivery: Attribute.Boolean;
+    eat_in: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -957,6 +996,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::data-personal.data-personal': ApiDataPersonalDataPersonal;
       'api::faq.faq': ApiFaqFaq;
+      'api::home.home': ApiHomeHome;
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
       'api::pricing-plan.pricing-plan': ApiPricingPlanPricingPlan;
       'api::product.product': ApiProductProduct;
