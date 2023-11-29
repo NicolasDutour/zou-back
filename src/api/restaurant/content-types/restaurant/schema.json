@@ -88,6 +88,21 @@
     "eat_in": {
       "type": "boolean",
       "required": false
+    },
+    "menu": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "choice_menu": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
