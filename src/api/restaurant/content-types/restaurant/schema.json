@@ -74,30 +74,32 @@
     },
     "short_description": {
       "type": "text",
-      "maxLength": 50
+      "maxLength": 100
     },
     "drive": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "take_away": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "delivery": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     },
     "eat_in": {
       "type": "boolean",
-      "required": false
+      "required": false,
+      "default": false
     },
-    "menu": {
+    "menu_photo": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images",
-        "files",
-        "videos",
-        "audios"
+        "files"
       ]
     },
     "choice_menu": {

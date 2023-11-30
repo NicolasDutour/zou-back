@@ -686,12 +686,13 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiDataPersonalDataPersonal extends Schema.CollectionType {
+export interface ApiDataPersonalDataPersonal extends Schema.SingleType {
   collectionName: 'data_personals';
   info: {
     singularName: 'data-personal';
     pluralName: 'data-personals';
     displayName: 'Data Personal';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -766,13 +767,12 @@ export interface ApiHomeHome extends Schema.SingleType {
   };
 }
 
-export interface ApiLegalNoticeLegalNotice extends Schema.CollectionType {
+export interface ApiLegalNoticeLegalNotice extends Schema.SingleType {
   collectionName: 'legal_notices';
   info: {
     singularName: 'legal-notice';
     pluralName: 'legal-notices';
     displayName: 'Legal Notice';
-    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -930,13 +930,13 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     slug: Attribute.String;
     short_description: Attribute.Text &
       Attribute.SetMinMaxLength<{
-        maxLength: 50;
+        maxLength: 100;
       }>;
-    drive: Attribute.Boolean;
-    take_away: Attribute.Boolean;
-    delivery: Attribute.Boolean;
-    eat_in: Attribute.Boolean;
-    menu: Attribute.Media;
+    drive: Attribute.Boolean & Attribute.DefaultTo<false>;
+    take_away: Attribute.Boolean & Attribute.DefaultTo<false>;
+    delivery: Attribute.Boolean & Attribute.DefaultTo<false>;
+    eat_in: Attribute.Boolean & Attribute.DefaultTo<false>;
+    menu_photo: Attribute.Media;
     choice_menu: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

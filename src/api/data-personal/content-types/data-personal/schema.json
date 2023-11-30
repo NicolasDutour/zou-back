@@ -1,10 +1,11 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "data_personals",
   "info": {
     "singularName": "data-personal",
     "pluralName": "data-personals",
-    "displayName": "Data Personal"
+    "displayName": "Data Personal",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

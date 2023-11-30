@@ -1,11 +1,10 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "legal_notices",
   "info": {
     "singularName": "legal-notice",
     "pluralName": "legal-notices",
-    "displayName": "Legal Notice",
-    "description": ""
+    "displayName": "Legal Notice"
   },
   "options": {
     "draftAndPublish": true
