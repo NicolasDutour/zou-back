@@ -103,8 +103,13 @@
       ]
     },
     "choice_menu": {
-      "type": "boolean",
-      "default": false
+      "type": "enumeration",
+      "enum": [
+        "list_products",
+        "import_files",
+        "both"
+      ],
+      "default": "list_products"
     }
   }
 }

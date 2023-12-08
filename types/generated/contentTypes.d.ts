@@ -937,7 +937,10 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
     delivery: Attribute.Boolean & Attribute.DefaultTo<false>;
     eat_in: Attribute.Boolean & Attribute.DefaultTo<false>;
     menu_photo: Attribute.Media;
-    choice_menu: Attribute.Boolean & Attribute.DefaultTo<false>;
+    choice_menu: Attribute.Enumeration<
+      ['list_products', 'import_files', 'both']
+    > &
+      Attribute.DefaultTo<'list_products'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
