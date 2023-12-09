@@ -18,5 +18,10 @@ npm run develop
 npm run build
 ```
 
-## ⚙️ Deployment
+## Deployment
 
+## Backup
+
+```
+yarn backup
+```
