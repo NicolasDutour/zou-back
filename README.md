@@ -11,17 +11,27 @@ Start your Strapi application with autoReload enabled. [Learn more](https://docs
 npm install
 npm run develop
 ```
+or
+```
+yarn install
+yarn develop
+```
 
 ### `build`
 
 ```
 npm run build
 ```
+or
+```
+yarn build
+```
 
 ## Deployment
 
 ## Backup
 
+Don't use npm, there is an issue
 ```
 yarn backup
 ```
