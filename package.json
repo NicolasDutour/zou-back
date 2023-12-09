@@ -7,8 +7,7 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi",
-    "backup": "strapi export --no-encrypt -f zouBackup"
+    "strapi": "strapi"
   },
   "devDependencies": {},
   "dependencies": {
