@@ -703,6 +703,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     singularName: 'home';
     pluralName: 'homes';
     displayName: 'Home';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -713,6 +714,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     slogan: Attribute.String & Attribute.Required;
     slogan_bis: Attribute.String & Attribute.Required;
     slogan_ter: Attribute.String & Attribute.Required;
+    home_banner_photo: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
