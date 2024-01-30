@@ -715,6 +715,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     slogan_bis: Attribute.String & Attribute.Required;
     slogan_ter: Attribute.String & Attribute.Required;
     home_banner_photo: Attribute.Media;
+    price: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -917,30 +918,6 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
   };
 }
 
-export interface ApiStepStep extends Schema.CollectionType {
-  collectionName: 'steps';
-  info: {
-    singularName: 'step';
-    pluralName: 'steps';
-    displayName: 'Step';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::step.step', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::step.step', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -963,7 +940,6 @@ declare module '@strapi/types' {
       'api::pricing-plan.pricing-plan': ApiPricingPlanPricingPlan;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
-      'api::step.step': ApiStepStep;
     }
   }
 }

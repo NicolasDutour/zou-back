@@ -42,6 +42,9 @@
         "audios",
         "files"
       ]
+    },
+    "price": {
+      "type": "decimal"
     }
   }
 }
