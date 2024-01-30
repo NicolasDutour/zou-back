@@ -70,11 +70,6 @@
       "relation": "oneToMany",
       "target": "api::restaurant.restaurant",
       "mappedBy": "users_permissions_user"
-    },
-    "pricing_plan": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::pricing-plan.pricing-plan"
     }
   }
 }

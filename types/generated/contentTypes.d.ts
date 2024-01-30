@@ -620,11 +620,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::restaurant.restaurant'
     >;
-    pricing_plan: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::pricing-plan.pricing-plan'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -749,42 +744,6 @@ export interface ApiLegalNoticeLegalNotice extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::legal-notice.legal-notice',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPricingPlanPricingPlan extends Schema.CollectionType {
-  collectionName: 'pricing_plans';
-  info: {
-    singularName: 'pricing-plan';
-    pluralName: 'pricing-plans';
-    displayName: 'PricingPlan';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    price: Attribute.Decimal & Attribute.Required;
-    access: Attribute.Text;
-    wedoforyou: Attribute.Text;
-    youmanage: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::pricing-plan.pricing-plan',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::pricing-plan.pricing-plan',
       'oneToOne',
       'admin::user'
     > &
@@ -937,7 +896,6 @@ declare module '@strapi/types' {
       'api::faq.faq': ApiFaqFaq;
       'api::home.home': ApiHomeHome;
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
-      'api::pricing-plan.pricing-plan': ApiPricingPlanPricingPlan;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
     }
