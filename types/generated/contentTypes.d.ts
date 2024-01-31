@@ -620,6 +620,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::restaurant.restaurant'
     >;
+    invoices: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::invoice.invoice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -717,6 +722,48 @@ export interface ApiHomeHome extends Schema.SingleType {
     createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInvoiceInvoice extends Schema.CollectionType {
+  collectionName: 'invoices';
+  info: {
+    singularName: 'invoice';
+    pluralName: 'invoices';
+    displayName: 'Invoice';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    invoice_name: Attribute.String;
+    start_date: Attribute.Date;
+    end_date: Attribute.Date;
+    image: Attribute.Media;
+    amount: Attribute.Decimal;
+    status: Attribute.Enumeration<['En cours', 'Pay\u00E9']> &
+      Attribute.DefaultTo<'En cours'>;
+    users_permissions_user: Attribute.Relation<
+      'api::invoice.invoice',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::invoice.invoice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::invoice.invoice',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -895,6 +942,7 @@ declare module '@strapi/types' {
       'api::data-personal.data-personal': ApiDataPersonalDataPersonal;
       'api::faq.faq': ApiFaqFaq;
       'api::home.home': ApiHomeHome;
+      'api::invoice.invoice': ApiInvoiceInvoice;
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
