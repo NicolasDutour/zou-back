@@ -76,6 +76,9 @@
       "relation": "oneToMany",
       "target": "api::invoice.invoice",
       "mappedBy": "users_permissions_user"
+    },
+    "stripeUserId": {
+      "type": "string"
     }
   }
 }
