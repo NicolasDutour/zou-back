@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stripe_products",
+  "info": {
+    "singularName": "stripe-product",
+    "pluralName": "stripe-products",
+    "displayName": "StripeProduct",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "stripeProductName": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "stripe_products"
+    },
+    "stripeProductId": {
+      "type": "string"
+    },
+    "stripePriceId": {
+      "type": "string"
+    },
+    "stripe_subscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::stripe-subscription.stripe-subscription",
+      "mappedBy": "stripe_product"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stripe_subscriptions",
+  "info": {
+    "singularName": "stripe-subscription",
+    "pluralName": "stripe-subscriptions",
+    "displayName": "StripeSubscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "stripeSubscriptionId": {
+      "type": "string"
+    },
+    "stripe_product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::stripe-product.stripe-product",
+      "inversedBy": "stripe_subscriptions"
+    }
+  }
+}

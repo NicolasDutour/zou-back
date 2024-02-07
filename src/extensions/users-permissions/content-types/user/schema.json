@@ -79,6 +79,12 @@
     },
     "stripeUserId": {
       "type": "string"
+    },
+    "stripe_products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::stripe-product.stripe-product",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
