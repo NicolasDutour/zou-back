@@ -943,17 +943,17 @@ export interface ApiStripeProductStripeProduct extends Schema.CollectionType {
   };
   attributes: {
     stripeProductName: Attribute.String;
-    users_permissions_user: Attribute.Relation<
-      'api::stripe-product.stripe-product',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     stripeProductId: Attribute.String;
     stripePriceId: Attribute.String;
     stripe_subscriptions: Attribute.Relation<
       'api::stripe-product.stripe-product',
       'oneToMany',
       'api::stripe-subscription.stripe-subscription'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::stripe-product.stripe-product',
+      'manyToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

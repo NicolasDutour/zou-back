@@ -14,12 +14,6 @@
     "stripeProductName": {
       "type": "string"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "stripe_products"
-    },
     "stripeProductId": {
       "type": "string"
     },
@@ -31,6 +25,12 @@
       "relation": "oneToMany",
       "target": "api::stripe-subscription.stripe-subscription",
       "mappedBy": "stripe_product"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "stripe_products"
     }
   }
 }
