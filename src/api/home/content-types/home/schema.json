@@ -43,8 +43,8 @@
         "files"
       ]
     },
-    "price": {
-      "type": "decimal"
+    "time": {
+      "type": "integer"
     }
   }
 }

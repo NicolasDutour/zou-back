@@ -721,7 +721,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     slogan_bis: Attribute.String & Attribute.Required;
     slogan_ter: Attribute.String & Attribute.Required;
     home_banner_photo: Attribute.Media;
-    price: Attribute.Decimal;
+    time: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -800,6 +800,32 @@ export interface ApiLegalNoticeLegalNotice extends Schema.SingleType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlanPlan extends Schema.CollectionType {
+  collectionName: 'plans';
+  info: {
+    singularName: 'plan';
+    pluralName: 'plans';
+    displayName: 'Plan';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amount: Attribute.Integer;
+    period: Attribute.Integer;
+    period_type: Attribute.Enumeration<['mois', 'an']>;
+    name: Attribute.Enumeration<['basic', 'premium', 'pro']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::plan.plan', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::plan.plan', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1030,6 +1056,7 @@ declare module '@strapi/types' {
       'api::home.home': ApiHomeHome;
       'api::invoice.invoice': ApiInvoiceInvoice;
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
+      'api::plan.plan': ApiPlanPlan;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'api::stripe-product.stripe-product': ApiStripeProductStripeProduct;
