@@ -858,8 +858,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.SetMinMax<{
         min: 1;
       }>;
-    base: Attribute.Enumeration<['tomate', 'cr\u00E8me']> &
-      Attribute.DefaultTo<'tomate'>;
+    base: Attribute.Enumeration<['tomato', 'cream']> &
+      Attribute.DefaultTo<'tomato'>;
     vegetarian: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;

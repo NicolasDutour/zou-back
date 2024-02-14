@@ -46,10 +46,10 @@
     "base": {
       "type": "enumeration",
       "enum": [
-        "tomate",
-        "crème"
+        "tomato",
+        "cream"
       ],
-      "default": "tomate",
+      "default": "tomato",
       "required": false
     },
     "vegetarian": {
