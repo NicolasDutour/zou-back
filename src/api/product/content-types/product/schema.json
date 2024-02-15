@@ -54,10 +54,12 @@
       "required": true
     },
     "tomato_base": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "cream_base": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -864,8 +864,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     dessert: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    tomato_base: Attribute.Boolean;
-    cream_base: Attribute.Boolean;
+    tomato_base: Attribute.Boolean & Attribute.DefaultTo<true>;
+    cream_base: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
