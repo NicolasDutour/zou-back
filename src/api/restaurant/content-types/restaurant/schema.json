@@ -110,6 +110,15 @@
         "both"
       ],
       "default": "list_products"
+    },
+    "pmr": {
+      "type": "boolean"
+    },
+    "terrace": {
+      "type": "boolean"
+    },
+    "air_conditioner": {
+      "type": "boolean"
     }
   }
 }

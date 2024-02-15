@@ -858,14 +858,14 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.SetMinMax<{
         min: 1;
       }>;
-    base: Attribute.Enumeration<['tomato', 'cream']> &
-      Attribute.DefaultTo<'tomato'>;
     vegetarian: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
     dessert: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    tomato_base: Attribute.Boolean;
+    cream_base: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -938,6 +938,9 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
       ['list_products', 'import_files', 'both']
     > &
       Attribute.DefaultTo<'list_products'>;
+    pmr: Attribute.Boolean;
+    terrace: Attribute.Boolean;
+    air_conditioner: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

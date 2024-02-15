@@ -43,15 +43,6 @@
       "required": false,
       "min": 1
     },
-    "base": {
-      "type": "enumeration",
-      "enum": [
-        "tomato",
-        "cream"
-      ],
-      "default": "tomato",
-      "required": false
-    },
     "vegetarian": {
       "type": "boolean",
       "required": true,
@@ -61,6 +52,12 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "tomato_base": {
+      "type": "boolean"
+    },
+    "cream_base": {
+      "type": "boolean"
     }
   }
 }
