@@ -679,30 +679,6 @@ export interface ApiDataPersonalDataPersonal extends Schema.SingleType {
   };
 }
 
-export interface ApiFaqFaq extends Schema.CollectionType {
-  collectionName: 'faqs';
-  info: {
-    singularName: 'faq';
-    pluralName: 'faqs';
-    displayName: 'Faq';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::faq.faq', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHomeHome extends Schema.SingleType {
   collectionName: 'homes';
   info: {
@@ -800,32 +776,6 @@ export interface ApiLegalNoticeLegalNotice extends Schema.SingleType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPlanPlan extends Schema.CollectionType {
-  collectionName: 'plans';
-  info: {
-    singularName: 'plan';
-    pluralName: 'plans';
-    displayName: 'Plan';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    amount: Attribute.Integer;
-    period: Attribute.Integer;
-    period_type: Attribute.Enumeration<['mois', 'an']>;
-    name: Attribute.Enumeration<['basic', 'premium', 'pro']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::plan.plan', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::plan.plan', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1055,11 +1005,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::data-personal.data-personal': ApiDataPersonalDataPersonal;
-      'api::faq.faq': ApiFaqFaq;
       'api::home.home': ApiHomeHome;
       'api::invoice.invoice': ApiInvoiceInvoice;
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
-      'api::plan.plan': ApiPlanPlan;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
       'api::stripe-product.stripe-product': ApiStripeProductStripeProduct;
