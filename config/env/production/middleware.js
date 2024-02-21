@@ -5,15 +5,9 @@ module.exports = [
   'strapi::logger',
   'strapi::query',
   'strapi::body',
+  'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  {
-    name: 'strapi::session',
-    config: {
-      secure: true,
-      sameSite: 'none',
-    }
-  },
   {
     name: 'strapi::security',
     config: {
