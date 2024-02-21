@@ -5,9 +5,14 @@ module.exports = [
   'strapi::logger',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
   'strapi::favicon',
   'strapi::public',
+  {
+    name: 'strapi::session',
+    secure: true,
+    maxAge: 86400000, // 24 hours
+    sameSite: 'none', // Allows cookies to be sent over cross-site requests
+  },
   {
     name: 'strapi::security',
     config: {

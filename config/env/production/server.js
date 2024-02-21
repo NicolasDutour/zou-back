@@ -11,12 +11,4 @@ module.exports = ({ env }) => ({
       secret: env('ADMIN_JWT_SECRET'),
     },
   },
-  session: {
-    secret: env('SESSION_SECRET'),
-    cookie: {
-      secure: env.bool('SESSION_SECURE', true), // Set to true if you're using HTTPS
-      maxAge: 86400000, // 24 hours
-      sameSite: 'none', // Allows cookies to be sent over cross-site requests
-    },
-  },
 })
