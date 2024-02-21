@@ -9,9 +9,10 @@ module.exports = [
   'strapi::public',
   {
     name: 'strapi::session',
-    secure: true,
-    maxAge: 86400000, // 24 hours
-    sameSite: 'none', // Allows cookies to be sent over cross-site requests
+    config: {
+      secure: true,
+      sameSite: 'none',
+    }
   },
   {
     name: 'strapi::security',
