@@ -625,12 +625,14 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::invoice.invoice'
     >;
-    stripeUserId: Attribute.String;
-    stripe_products: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::stripe-product.stripe-product'
-    >;
+    stripeCustomerId: Attribute.String;
+    stripeProductId: Attribute.String;
+    stripePriceId: Attribute.String;
+    stripeSubscriptionId: Attribute.String;
+    stripeSessionId: Attribute.String;
+    trial_begin: Attribute.DateTime;
+    trial_end: Attribute.DateTime;
+    hasTrialUsed: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -909,86 +911,6 @@ export interface ApiRestaurantRestaurant extends Schema.CollectionType {
   };
 }
 
-export interface ApiStripeProductStripeProduct extends Schema.CollectionType {
-  collectionName: 'stripe_products';
-  info: {
-    singularName: 'stripe-product';
-    pluralName: 'stripe-products';
-    displayName: 'StripeProduct';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    stripeProductName: Attribute.String;
-    stripeProductId: Attribute.String;
-    stripePriceId: Attribute.String;
-    stripe_subscriptions: Attribute.Relation<
-      'api::stripe-product.stripe-product',
-      'oneToMany',
-      'api::stripe-subscription.stripe-subscription'
-    >;
-    users_permissions_user: Attribute.Relation<
-      'api::stripe-product.stripe-product',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::stripe-product.stripe-product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::stripe-product.stripe-product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiStripeSubscriptionStripeSubscription
-  extends Schema.CollectionType {
-  collectionName: 'stripe_subscriptions';
-  info: {
-    singularName: 'stripe-subscription';
-    pluralName: 'stripe-subscriptions';
-    displayName: 'StripeSubscription';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    stripeSubscriptionId: Attribute.String;
-    stripe_product: Attribute.Relation<
-      'api::stripe-subscription.stripe-subscription',
-      'manyToOne',
-      'api::stripe-product.stripe-product'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::stripe-subscription.stripe-subscription',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::stripe-subscription.stripe-subscription',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1010,8 +932,6 @@ declare module '@strapi/types' {
       'api::legal-notice.legal-notice': ApiLegalNoticeLegalNotice;
       'api::product.product': ApiProductProduct;
       'api::restaurant.restaurant': ApiRestaurantRestaurant;
-      'api::stripe-product.stripe-product': ApiStripeProductStripeProduct;
-      'api::stripe-subscription.stripe-subscription': ApiStripeSubscriptionStripeSubscription;
     }
   }
 }
